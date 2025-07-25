@@ -7,10 +7,14 @@ const fetch = require('node-fetch');
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;  
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
 app.use(cors());
+app.use(cors({
+     origin: ['https://your-vercel-app.vercel.app', 'http://localhost:8080'],
+     credentials: true
+   }));
 app.use(express.json());
 
 // POST /api/analyze-text
